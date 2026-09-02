@@ -1,0 +1,55 @@
+pipeline:
+  name: harnessCIpipeline
+  identifier: harnessCIpipeline
+  projectIdentifier: Harness_Labn
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: Harness_Lab
+        repoName: harnesslab
+        build: <+input>
+  stages:
+    - stage:
+        name: harnesslab-build-and-test
+        identifier: harnesslabbuildandtest
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          buildIntelligence:
+            enabled: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: harnesslsbk8s
+              namespace: default
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run Tests
+                  identifier: Run_Tests
+                  spec:
+                    connectorRef: harnesslabdocker
+                    image: golang:1.22-alpine
+                    shell: Sh
+                    command: npm test
+                  description: Run the test steps here
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry
+                  identifier: BuildAndPushDockerRegistry
+                  spec:
+                    connectorRef: harnesslabdocker
+                    repo: siddhartha83/harnesslab
+                    tags:
+                      - <+pipeline.sequenceId>
+                    dockerfile: Dockerfile

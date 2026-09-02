@@ -39,7 +39,7 @@ pipeline:
                   identifier: Run_Tests
                   spec:
                     connectorRef: harnesslabdocker
-                    image: golang:1.22-alpine
+                    image: node:20
                     shell: Sh
                     command: npm test
                   description: Run the test steps here

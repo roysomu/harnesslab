@@ -1,0 +1,13 @@
+{
+  "name": "harness-sample-app",
+  "version": "1.0.0",
+  "description": "Lightweight Node.js app for Harness SE Lab",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

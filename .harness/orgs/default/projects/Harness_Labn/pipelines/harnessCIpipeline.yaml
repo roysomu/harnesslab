@@ -51,7 +51,7 @@ pipeline:
                     connectorRef: harnesslabdocker
                     repo: siddhartha83/harnesslab
                     tags:
-                      - <+pipeline.sequenceId>
+                      - latest
                     dockerfile: Dockerfile
     - stage:
         name: harness-deplouy

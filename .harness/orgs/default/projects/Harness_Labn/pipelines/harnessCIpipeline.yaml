@@ -34,15 +34,16 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Run
-                  name: Run Tests
-                  identifier: Run_Tests
-                  spec:
-                    connectorRef: harnesslabdocker
-                    image: node:20
-                    shell: Sh
-                    command: npm test
-                  description: Run the test steps here
+                  name: node-test-template
+                  identifier: nodetesttemplate
+                  template:
+                    templateRef: nodetestrunner
+                    versionLabel: 1.0.0
+                    templateInputs:
+                      type: Run
+                      spec:
+                        image: <+input>.default(node:20-alpine)
+                        command: npm test
               - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry

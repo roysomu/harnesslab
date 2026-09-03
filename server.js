@@ -2,7 +2,7 @@ const http = require('http');
 
 const PORT = process.env.PORT || 8080;
 
-function getWelcomeHtml(name = 'Harness SE Candidate') {
+function getWelcomeHtml(name = 'Siddhartha Roy') {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: harnesslab-deployment
+  labels:
+    app: harnesslab
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: harnesslab
+  template:
+    metadata:
+      labels:
+        app: harnesslab
+    spec:
+      containers:
+        - name: harnesslab-container
+          image: siddhartha83/harnesslab:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
+            requests:
+              cpu: "100m"
+              memory: "128Mi"

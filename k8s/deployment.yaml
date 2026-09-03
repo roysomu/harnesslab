@@ -17,6 +17,7 @@ spec:
       containers:
         - name: harnesslab-container
           image: siddhartha83/harnesslab:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           resources:

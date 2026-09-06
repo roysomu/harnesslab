@@ -27480,7 +27480,7 @@ spec:
             cpu: "2"
             memory: 3Gi
           requests:
-            cpu: "1"
+            cpu: "500m"
             memory: 3Gi
         securityContext:
           allowPrivilegeEscalation: false

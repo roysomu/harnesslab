@@ -9,10 +9,12 @@ spec:
   selector:
     matchLabels:
       app: harnesslab
+      harness.io/track: stable
   template:
     metadata:
       labels:
         app: harnesslab
+        harness.io/track: stable
     spec:
       containers:
         - name: harnesslab-container

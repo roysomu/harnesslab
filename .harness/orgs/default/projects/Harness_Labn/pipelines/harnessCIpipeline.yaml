@@ -86,6 +86,21 @@ pipeline:
                               count: 1
                           skipDryRun: false
                     - step:
+                        type: HarnessApproval
+                        name: Harness-Canary-Approval
+                        identifier: HarnessCanaryApproval
+                        spec:
+                          approvalMessage: Please review the following information and approve the pipeline progression
+                          includePipelineExecutionHistory: true
+                          isAutoRejectEnabled: false
+                          approvers:
+                            userGroups:
+                              - account._account_all_users
+                            minimumCount: 1
+                            disallowPipelineExecutor: false
+                          approverInputs: []
+                        timeout: 1h
+                    - step:
                         name: Canary Delete
                         identifier: canaryDelete
                         type: K8sCanaryDelete

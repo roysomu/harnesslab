@@ -20,15 +20,6 @@ roleRef:
 
 ---
 
-apiVersion: v1
-kind: Secret
-metadata:
-  name: kubernetes-delegate-account-token
-  namespace: harness-delegate-ng
-type: Opaque
-data:
-  DELEGATE_TOKEN: "NTI5ZDA0MjNiZDAwYTU3NGIwZjg3NTVmN2RmNzZiYzg="
-
 ---
 
 # If delegate needs to use a proxy, please follow instructions available in the documentation
@@ -194,15 +185,6 @@ metadata:
   namespace: harness-delegate-ng
 
 ---
-
-apiVersion: v1
-kind: Secret
-metadata:
-  name: kubernetes-delegate-upgrader-token
-  namespace: harness-delegate-ng
-type: Opaque
-data:
-  UPGRADER_TOKEN: "NTI5ZDA0MjNiZDAwYTU3NGIwZjg3NTVmN2RmNzZiYzg="
 
 ---
 
